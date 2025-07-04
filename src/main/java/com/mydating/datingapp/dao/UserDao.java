@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Repository;
 
 import com.mydating.datingapp.entity.User;
@@ -36,6 +37,18 @@ public class UserDao {
 
 	public Optional<User> findUserById(int id) {
 		return userRepositoty.findById(id);
+	}
+
+
+
+	public List<User> searchByName(String letters) {
+		return userRepositoty.searchByName(letters);
+	}
+
+
+
+	public List<User> searchByEmail(String letters) {
+		return userRepositoty.searchByEmail(letters);
 	}
 	
 	

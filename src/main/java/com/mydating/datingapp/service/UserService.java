@@ -130,13 +130,36 @@ public class UserService {
 		}
 		return ResponseEntity.status(404).body("Invalid id");
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+	public ResponseEntity<?> searchByName(String letters) {
+		{
+			List<User> users = userDao.searchByName("%" + letters + "%");
+			if (users.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No user found with letters :" + letters);
+
+			} else 
+				return ResponseEntity.status(HttpStatus.OK).body(users);
+			
+
+		}
+
+	}
+
+
+
+
+	public ResponseEntity<?> searchByEmail(String letters) {
+		List<User> users = userDao.searchByEmail("%" + letters + "%");
+		if (users.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No user found with letters :" + letters);
+
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).body(users);
+		}
+
+	}
 
 }
